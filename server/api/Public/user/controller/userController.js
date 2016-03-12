@@ -1,25 +1,25 @@
-/// <reference path="../../../typings/main.d.ts" />
+/// <reference path="../../../../typings/tsd.d.ts" />
 "use strict";
-var userDao_1 = require('../dao/userDao');
+var User = require('../model/userModel');
 var UserController = (function () {
     function UserController() {
     }
     UserController.getAll = function (req, res) {
-        userDao_1.default
+        User
             .getAll()
             .then(function (users) { return res.status(200).json(users); })
             .catch(function (error) { return res.status(400).json(error); });
     };
     UserController.createUser = function (req, res) {
         var _user = req.body;
-        userDao_1.default
+        User
             .createUser(_user)
             .then(function (user) { return res.status(201).json(user); })
             .catch(function (error) { return res.status(400).json(error); });
     };
     UserController.deleteUser = function (req, res) {
         var _id = req.params.id;
-        userDao_1.default
+        User
             .deleteUser(_id)
             .then(function () { return res.status(200).end(); })
             .catch(function (error) { return res.status(400).json(error); });

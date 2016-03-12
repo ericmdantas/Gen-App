@@ -1,4 +1,4 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 "use strict";
 var mongoose = require('mongoose');
 var dbConst = require('../constants/db.json');
@@ -15,7 +15,3 @@ var DBConfig = (function () {
 }());
 exports.DBConfig = DBConfig;
 ;
-module.exports = {
-    'secret': 'ng-fullstackisawesome',
-    'database': 'mongodb://localhost/node-rest-auth'
-};

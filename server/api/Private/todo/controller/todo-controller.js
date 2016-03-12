@@ -1,4 +1,4 @@
-/// <reference path="../../../typings/main.d.ts" />
+/// <reference path="../../../../typings/tsd.d.ts" />
 "use strict";
 var todo_dao_1 = require('../dao/todo-dao');
 var TodoController = (function () {
