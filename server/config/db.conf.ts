@@ -3,7 +3,7 @@
 "use strict";
 
 import * as mongoose from 'mongoose';
-import * as dbConst from '../constants/db.json';
+var dbConst =  require ('../constants/db.conf');
 
 export class DBConfig {
     static init():void {
@@ -13,4 +13,10 @@ export class DBConfig {
       mongoose.connect(URL);
       mongoose.connection.on('error', console.error.bind(console, 'An error ocurred with the DB connection: '));
     }
+};
+
+
+module.exports = {
+  'secret': 'ng-fullstackisawesome',
+  'database': 'mongodb://localhost/node-rest-auth'
 };

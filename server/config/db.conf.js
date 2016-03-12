@@ -15,3 +15,7 @@ var DBConfig = (function () {
 }());
 exports.DBConfig = DBConfig;
 ;
+module.exports = {
+    'secret': 'ng-fullstackisawesome',
+    'database': 'mongodb://localhost/node-rest-auth'
+};
