@@ -1,13 +1,11 @@
-/// <reference path="../../../typings/main.d.ts" />
+/// <reference path="../../../../typings/tsd.d.ts" />
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var bcrypt = require('bcrypt');
 var UserSchema = new Schema({
-    firstName: { type: String,
-        required: true
+    firstName: { type: String
     },
-    lastName: { type: String,
-        required: true
+    lastName: { type: String
     },
     email: { type: String,
         unique: true,
@@ -18,6 +16,7 @@ var UserSchema = new Schema({
     createdAt: { type: Date, default: Date.now }
 });
 UserSchema.pre('save', function (next) {
+    console.log("premod");
     var user = this;
     if (this.isModified('password') || this.isNew) {
         bcrypt.genSalt(10, function (err, salt) {
