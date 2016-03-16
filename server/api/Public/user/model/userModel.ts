@@ -13,8 +13,10 @@ var UserSchema = new Schema({
                     unique: true,
                     required:true
     },
-    salt: { String },
-    hash: { String },
+    password: {
+        type: String,
+        required: true
+    },
     createdAt: {type: Date, default: Date.now}
 });
 
@@ -31,7 +33,8 @@ UserSchema.pre('save', function (next) {
             console.log("bcrypt hash");
             bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) {
-                    console.log("bcrypt gen hash err");
+                    console.log("user password: " + user.password);
+                    console.log(err);
                     return next(err);
                 }
                 user.password = hash;
