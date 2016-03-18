@@ -18,19 +18,14 @@ var UserSchema = new Schema({
     createdAt: { type: Date, default: Date.now }
 });
 UserSchema.pre('save', function (next) {
-    console.log("premod");
     var user = this;
     if (this.isModified('password') || this.isNew) {
-        console.log("pwismod");
         bcrypt.genSalt(10, function (err, salt) {
             if (err) {
-                console.log("bcrypt gen salt err");
                 return next(err);
             }
-            console.log("bcrypt hash");
             bcrypt.hash(user.password, salt, function (err, hash) {
                 if (err) {
-                    console.log("user password: " + user.password);
                     console.log(err);
                     return next(err);
                 }
@@ -45,6 +40,8 @@ UserSchema.pre('save', function (next) {
 });
 UserSchema.methods.comparePassword = function (passw, cb) {
     bcrypt.compare(passw, this.password, function (err, isMatch) {
+        console.log("passw; " + passw);
+        console.log("this.password; " + this.password);
         if (err) {
             return cb(err);
         }

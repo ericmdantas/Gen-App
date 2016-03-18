@@ -12,5 +12,6 @@ export class DBConfig {
 
       mongoose.connect(URL);
       mongoose.connection.on('error', console.error.bind(console, 'An error ocurred with the DB connection: '));
+
     }
 };
