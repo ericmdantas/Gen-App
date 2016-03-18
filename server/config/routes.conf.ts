@@ -1,11 +1,11 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 
 "use strict";
 
-import * as morgan from 'morgan';
-import * as bodyParser from 'body-parser';
-import * as contentLength from 'express-content-length-validator';
-import * as helmet from 'helmet';
+var bodyParser  = require('body-parser');
+var morgan      = require('morgan');
+var contentLength = require('express-content-length-validator');
+var helmet = require('helmet');
 
 export class RoutesConfig {
     static init(application:Object, exp:Object):void {
