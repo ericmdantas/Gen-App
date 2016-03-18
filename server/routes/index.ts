@@ -45,7 +45,7 @@ export class Routes {
 		res.render("signup");
 	});
 
-    //app.use("/signup", bodyParser.urlencoded({ extended: false }));
+    app.use("/signup", bodyParser.urlencoded({ extended: false }));
     
 	app.post("/signup", Auth.userExist, function (req, res, next) {
 		 if (!req.body.email || !req.body.password) {

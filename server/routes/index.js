@@ -37,7 +37,7 @@ var Routes = (function () {
         app.get("/signup", function (req, res) {
             res.render("signup");
         });
-        //app.use("/signup", bodyParser.urlencoded({ extended: false }));
+        app.use("/signup", bodyParser.urlencoded({ extended: false }));
         app.post("/signup", Auth.userExist, function (req, res, next) {
             if (!req.body.email || !req.body.password) {
                 res.json({ success: false, msg: 'Please pass name and password.' });
