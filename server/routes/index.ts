@@ -18,7 +18,7 @@ export class Routes {
 
      router
        .route('*')
-       .get(StaticDispatcher.sendIndex);
+       //.get(StaticDispatcher.sendIndex);
 
      app.use('/', router);
      app.use(bodyParser.urlencoded({ extended: false }));
@@ -47,7 +47,7 @@ export class Routes {
 */
     //app.use("/signup", bodyParser.urlencoded({ extended: false }));
     
-	app.post("/signup", Auth.userExist, function (req, res, next) {
+	app.post("/signup", function (req, res, next) {
 		 if (!req.body.email || !req.body.password) {
                 res.json({success: false, msg: 'Please pass name and password.'});
             } else {

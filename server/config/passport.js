@@ -4,7 +4,7 @@ var User = require('../api/public/user/model/userModel');
 var config = require('./db.conf'); // get db config file
 module.exports = function (passport) {
     var opts = {};
-    opts.secretOrKey = config.secret;
+    opts.secretOrKey = 'GenAppIsAwesome';
     passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
         User.findOne({ id: jwt_payload.id }, function (err, user) {
             if (err) {

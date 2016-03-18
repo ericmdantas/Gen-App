@@ -1,7 +1,7 @@
-/// <reference path="../typings/main.d.ts" />
+/// <reference path="../typings/tsd.d.ts" />
 "use strict";
-var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var morgan = require('morgan');
 var contentLength = require('express-content-length-validator');
 var helmet = require('helmet');
 var RoutesConfig = (function () {

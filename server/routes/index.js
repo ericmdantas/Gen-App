@@ -1,7 +1,6 @@
 /// <reference path="../typings/tsd.d.ts" />
 "use strict";
 var todo_routes_1 = require('../api/private/todo/routes/todo-routes');
-var index_1 = require('../commons/static/index');
 var User = require('../api/public/user/model/userModel');
 var Auth = require('../middleware/authorization.js');
 var passport = require('passport');
@@ -15,8 +14,8 @@ var Routes = (function () {
         router.route('/api/private/*', Auth.isAuthenticated); //here goes the passport auth parameter...
         todo_routes_1.TodoRoutes.init(router);
         router
-            .route('*')
-            .get(index_1.StaticDispatcher.sendIndex);
+            .route('*');
+        //.get(StaticDispatcher.sendIndex);
         app.use('/', router);
         app.use(bodyParser.urlencoded({ extended: false }));
         /*
@@ -43,7 +42,7 @@ var Routes = (function () {
        });
    */
         //app.use("/signup", bodyParser.urlencoded({ extended: false }));
-        app.post("/signup", Auth.userExist, function (req, res, next) {
+        app.post("/signup", function (req, res, next) {
             if (!req.body.email || !req.body.password) {
                 res.json({ success: false, msg: 'Please pass name and password.' });
             }
