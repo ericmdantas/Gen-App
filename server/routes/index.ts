@@ -21,8 +21,8 @@ export class Routes {
        .get(StaticDispatcher.sendIndex);
 
      app.use('/', router);
-     //app.use(express.bodyParser());
-     
+     app.use(bodyParser.urlencoded({ extended: false }));
+     /*
      app.get("/", function(req, res){ 
 		if(req.isAuthenticated()){
 		  res.render("home", { user : req.user}); 
@@ -45,7 +45,7 @@ export class Routes {
 		res.render("signup");
 	});
 */
-    app.use("/signup", bodyParser.urlencoded({ extended: false }));
+    //app.use("/signup", bodyParser.urlencoded({ extended: false }));
     
 	app.post("/signup", Auth.userExist, function (req, res, next) {
 		 if (!req.body.email || !req.body.password) {
@@ -68,7 +68,7 @@ export class Routes {
             }
         });
         
-        app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
+        //app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
         
         app.post("/authenticate", function (req, res) {
             console.log("email " + req.body.email);
@@ -106,7 +106,7 @@ export class Routes {
             req.logout();
             res.redirect('/login');
         }); 
-    
+    */
         //app.use("/memberinfo", bodyParser.urlencoded({ extended: false }));
         
         app.get('/memberinfo', function(req, res) {
@@ -114,7 +114,7 @@ export class Routes {
             var token = getToken(req.headers);
             console.log("here 3");
             if (token) {
-                var decoded = jwt.decode(token, config.secret);
+                var decoded = jwt.decode(token, 'GenAppIsAwesome');
                 console.log("here 1");
                 User.findOne({
                 name: decoded.name
@@ -146,6 +146,6 @@ export class Routes {
             } else {
                 return null;
             }
-        }; */
+        }; 
    }
 };
