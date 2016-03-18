@@ -31,7 +31,7 @@ export class Routes {
 		}
 	 });
      
-     app.get("/login", function(req, res){ 
+/*     app.get("/login", function(req, res){ 
 		res.render("login");
 	});
 
@@ -44,7 +44,7 @@ export class Routes {
 	app.get("/signup", function (req, res) {
 		res.render("signup");
 	});
-
+*/
     app.use("/signup", bodyParser.urlencoded({ extended: false }));
     
 	app.post("/signup", Auth.userExist, function (req, res, next) {
@@ -68,42 +68,84 @@ export class Routes {
             }
         });
         
-    app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
-    
-    app.post("/authenticate", function (req, res) {
-        console.log("email " + req.body.email);
-        User.findOne({
-            email: req.body.email
-        }, function(err, user) {
-            if (err) throw err;
-            if (!user) {
-            res.send({success: false, msg: 'Authentication failed. User not found.'});
-            } else {
-            // check if password matches
-            console.log("user " + user.password);
-            user.comparePassword(req.body.password, function (err, isMatch) {
-                if (isMatch && !err) {
-                // if user is found and password is right create a token
-                var token = jwt.encode(user, 'GenAppIsAwesome');
-                // return the information including token as JSON
-                res.json({success: true, token: 'JWT ' + token});
+        app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
+        
+        app.post("/authenticate", function (req, res) {
+            console.log("email " + req.body.email);
+            User.findOne({
+                email: req.body.email
+            }, function(err, user) {
+                if (err) throw err;
+                if (!user) {
+                res.send({success: false, msg: 'Authentication failed. User not found.'});
                 } else {
-                res.send({success: false, msg: 'Authentication failed. Wrong password.'});
-                console.log("isMatch: " + isMatch); 
-                console.log("err: " + err); 
+                // check if password matches
+                console.log("user " + user.password);
+                user.comparePassword(req.body.password, function (err, isMatch) {
+                    if (isMatch && !err) {
+                    // if user is found and password is right create a token
+                    var token = jwt.encode(user, 'GenAppIsAwesome');
+                    // return the information including token as JSON
+                    res.json({success: true, token: 'JWT ' + token});
+                    } else {
+                    res.send({success: false, msg: 'Authentication failed. Wrong password.'});
+                    console.log("isMatch: " + isMatch); 
+                    console.log("err: " + err); 
+                    }
+                });
                 }
             });
-            }
         });
-      });
-    
-	app.get("/profile", Auth.isAuthenticated , function(req, res){ 
-		res.render("profile", { user : req.user});
-	});
+        
+        /*
+        app.get("/profile", Auth.isAuthenticated , function(req, res){ 
+            res.render("profile", { user : req.user});
+        });
 
-	app.get('/logout', function(req, res){
-		req.logout();
-		res.redirect('/login');
-	});    
+        app.get('/logout', function(req, res){
+            req.logout();
+            res.redirect('/login');
+        }); 
+    
+        //app.use("/memberinfo", bodyParser.urlencoded({ extended: false }));
+        
+        app.get('/memberinfo', function(req, res) {
+            console.log("here 3");
+            var token = getToken(req.headers);
+            console.log("here 3");
+            if (token) {
+                var decoded = jwt.decode(token, config.secret);
+                console.log("here 1");
+                User.findOne({
+                name: decoded.name
+                }, function(err, user) {
+                    if (err) throw err;
+            
+                    if (!user) {
+                    console.log("User not found");
+                    return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
+                    } else {
+                        console.log("here 2");
+                    res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
+                    }
+                });
+            } else {
+                
+                return res.status(403).send({success: false, msg: 'No token provided.'});
+            }
+            });
+ 
+            var getToken = function (headers) {
+            if (headers && headers.authorization) {
+                var parted = headers.authorization.split(' ');
+                if (parted.length === 2) {
+                return parted[1];
+                } else {
+                return null;
+                }
+            } else {
+                return null;
+            }
+        }; */
    }
 };

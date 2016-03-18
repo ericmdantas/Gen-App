@@ -96,6 +96,47 @@ var Routes = (function () {
             req.logout();
             res.redirect('/login');
         });
+        //app.use("/memberinfo", bodyParser.urlencoded({ extended: false }));
+        app.get('/memberinfo', function (req, res) {
+            console.log("here 3");
+            var token = getToken(req.headers);
+            console.log("here 3");
+            if (token) {
+                var decoded = jwt.decode(token, config.secret);
+                console.log("here 1");
+                User.findOne({
+                    name: decoded.name
+                }, function (err, user) {
+                    if (err)
+                        throw err;
+                    if (!user) {
+                        console.log("User not found");
+                        return res.status(403).send({ success: false, msg: 'Authentication failed. User not found.' });
+                    }
+                    else {
+                        console.log("here 2");
+                        res.json({ success: true, msg: 'Welcome in the member area ' + user.name + '!' });
+                    }
+                });
+            }
+            else {
+                return res.status(403).send({ success: false, msg: 'No token provided.' });
+            }
+        });
+        var getToken = function (headers) {
+            if (headers && headers.authorization) {
+                var parted = headers.authorization.split(' ');
+                if (parted.length === 2) {
+                    return parted[1];
+                }
+                else {
+                    return null;
+                }
+            }
+            else {
+                return null;
+            }
+        };
     };
     return Routes;
 }());
