@@ -18,6 +18,8 @@ var Routes = (function () {
         //.get(StaticDispatcher.sendIndex);
         app.use('/', router);
         app.use(bodyParser.urlencoded({ extended: false }));
+        app.use(bodyParser.json());
+        app.use(passport.initialize());
         /*
         app.get("/", function(req, res){
            if(req.isAuthenticated()){
@@ -65,7 +67,6 @@ var Routes = (function () {
         });
         //app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
         app.post("/authenticate", function (req, res) {
-            console.log("email " + req.body.email);
             User.findOne({
                 email: req.body.email
             }, function (err, user) {
@@ -76,7 +77,6 @@ var Routes = (function () {
                 }
                 else {
                     // check if password matches
-                    console.log("user " + user.password);
                     user.comparePassword(req.body.password, function (err, isMatch) {
                         if (isMatch && !err) {
                             // if user is found and password is right create a token
@@ -86,28 +86,15 @@ var Routes = (function () {
                         }
                         else {
                             res.send({ success: false, msg: 'Authentication failed. Wrong password.' });
-                            console.log("isMatch: " + isMatch);
-                            console.log("err: " + err);
                         }
                     });
                 }
             });
         });
-        /*
-        app.get("/profile", Auth.isAuthenticated , function(req, res){
-            res.render("profile", { user : req.user});
-        });
-
-        app.get('/logout', function(req, res){
-            req.logout();
-            res.redirect('/login');
-        });
-    */
-        //app.use("/memberinfo", bodyParser.urlencoded({ extended: false }));
-        app.get('/memberinfo', function (req, res) {
+        app.get('/memberinfo', passport.authenticate('jwt', { session: false }), function (req, res) {
             console.log("here 3");
             var token = getToken(req.headers);
-            console.log("here 3");
+            console.log("here 4");
             if (token) {
                 var decoded = jwt.decode(token, 'GenAppIsAwesome');
                 console.log("here 1");

@@ -11,6 +11,8 @@ import * as express from 'express';
 import * as os from 'os';
 import {RoutesConfig} from './config/routes.conf';
 import {DBConfig} from './config/db.conf';
+import {Passport} from './config/passport'
+//var passport = require('./config/passport');
 import {Routes} from './routes/index';
 
 const app = express();
@@ -18,6 +20,7 @@ const server = app.listen(PORT);
 
 RoutesConfig.init(app, express);
 DBConfig.init();
+Passport.init();
 Routes.init(app, express.Router());
 
 console.log(`up and running @: ${os.hostname()} on port: ${PORT}`);

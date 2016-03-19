@@ -22,6 +22,8 @@ export class Routes {
 
      app.use('/', router);
      app.use(bodyParser.urlencoded({ extended: false }));
+     app.use(bodyParser.json());
+     app.use(passport.initialize());
      /*
      app.get("/", function(req, res){ 
 		if(req.isAuthenticated()){
@@ -71,7 +73,6 @@ export class Routes {
         //app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
         
         app.post("/authenticate", function (req, res) {
-            console.log("email " + req.body.email);
             User.findOne({
                 email: req.body.email
             }, function(err, user) {
@@ -80,7 +81,6 @@ export class Routes {
                 res.send({success: false, msg: 'Authentication failed. User not found.'});
                 } else {
                 // check if password matches
-                console.log("user " + user.password);
                 user.comparePassword(req.body.password, function (err, isMatch) {
                     if (isMatch && !err) {
                     // if user is found and password is right create a token
@@ -89,63 +89,50 @@ export class Routes {
                     res.json({success: true, token: 'JWT ' + token});
                     } else {
                     res.send({success: false, msg: 'Authentication failed. Wrong password.'});
-                    console.log("isMatch: " + isMatch); 
-                    console.log("err: " + err); 
                     }
                 });
                 }
             });
         });
         
-        /*
-        app.get("/profile", Auth.isAuthenticated , function(req, res){ 
-            res.render("profile", { user : req.user});
-        });
-
-        app.get('/logout', function(req, res){
-            req.logout();
-            res.redirect('/login');
-        }); 
-    */
-        //app.use("/memberinfo", bodyParser.urlencoded({ extended: false }));
-        
-        app.get('/memberinfo', function(req, res) {
-            console.log("here 3");
-            var token = getToken(req.headers);
-            console.log("here 3");
-            if (token) {
-                var decoded = jwt.decode(token, 'GenAppIsAwesome');
-                console.log("here 1");
-                User.findOne({
-                name: decoded.name
-                }, function(err, user) {
-                    if (err) throw err;
-            
-                    if (!user) {
-                    console.log("User not found");
-                    return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
-                    } else {
-                        console.log("here 2");
-                    res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
-                    }
-                });
-            } else {
+        app.get('/memberinfo', passport.authenticate('jwt', { session: false}),
+            function(req, res) {
+                console.log("here 3");
+                var token = getToken(req.headers);
+                console.log("here 4");
+                if (token) {
+                    var decoded = jwt.decode(token, 'GenAppIsAwesome');
+                    console.log("here 1");
+                    User.findOne({
+                    name: decoded.name
+                    }, function(err, user) {
+                        if (err) throw err;
                 
-                return res.status(403).send({success: false, msg: 'No token provided.'});
-            }
-            });
- 
-            var getToken = function (headers) {
-            if (headers && headers.authorization) {
-                var parted = headers.authorization.split(' ');
-                if (parted.length === 2) {
-                return parted[1];
+                        if (!user) {
+                        console.log("User not found");
+                        return res.status(403).send({success: false, msg: 'Authentication failed. User not found.'});
+                        } else {
+                            console.log("here 2");
+                        res.json({success: true, msg: 'Welcome in the member area ' + user.name + '!'});
+                        }
+                    });
                 } else {
-                return null;
+                    
+                    return res.status(403).send({success: false, msg: 'No token provided.'});
                 }
-            } else {
-                return null;
-            }
-        }; 
-   }
-};
+                });
+    
+                var getToken = function (headers) {
+                if (headers && headers.authorization) {
+                    var parted = headers.authorization.split(' ');
+                    if (parted.length === 2) {
+                    return parted[1];
+                    } else {
+                    return null;
+                    }
+                } else {
+                    return null;
+                }
+            }; 
+        }
+     };
