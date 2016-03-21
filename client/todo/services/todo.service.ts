@@ -21,9 +21,14 @@ export class TodoService {
   }
 
   getAll():Observable<any> {
+      let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let authToken = localStorage.getItem('auth_token');
+    headers.append('Authorization', `Bearer ${authToken}`);
     return this._http
-               .get(TodoService.ENDPOINT.replace(':id', ''))
+               .get(TodoService.ENDPOINT.replace(':id', ''), { headers: headers })
                .map((r) => r.json());
+               
   }
 
   add(message:string):Observable<any> {
