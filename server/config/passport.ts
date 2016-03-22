@@ -1,7 +1,5 @@
 var passport = require('passport');
 var JwtStrategy = require('passport-jwt').Strategy;
- 
-// load up the user model
 
 var User = require ('../api/public/user/model/userModel');
 var config = require('./db.conf'); // get db config file
@@ -13,7 +11,7 @@ var config = require('./db.conf'); // get db config file
       ExtractJwt = require('passport-jwt').ExtractJwt;
       var opts = {}
       opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
-      opts.secretOrKey = 'GenAppIsAwesome';
+      opts.secretOrKey = config.secret;
       passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
         User.findOne({id: jwt_payload.sub}, function(err, user) {
             if (err) {

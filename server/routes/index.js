@@ -92,12 +92,9 @@ var Routes = (function () {
             });
         });
         app.get('/memberinfo', passport.authenticate('jwt', { session: false }), function (req, res) {
-            console.log("here 3");
             var token = getToken(req.headers);
-            console.log("here 4");
             if (token) {
                 var decoded = jwt.decode(token, 'GenAppIsAwesome');
-                console.log("here 1");
                 User.findOne({
                     name: decoded.name
                 }, function (err, user) {
@@ -108,7 +105,6 @@ var Routes = (function () {
                         return res.status(403).send({ success: false, msg: 'Authentication failed. User not found.' });
                     }
                     else {
-                        console.log("here 2");
                         res.json({ success: true, msg: 'Welcome in the member area ' + user.name + '!' });
                     }
                 });

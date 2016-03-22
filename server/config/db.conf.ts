@@ -14,4 +14,5 @@ export class DBConfig {
       mongoose.connection.on('error', console.error.bind(console, 'An error ocurred with the DB connection: '));
 
     }
+    static secret = 'genappisawesome';
 };

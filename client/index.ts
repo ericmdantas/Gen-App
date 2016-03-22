@@ -3,6 +3,6 @@
 import {bootstrap} from 'angular2/platform/browser';
 import {HTTP_PROVIDERS} from 'angular2/http';
 
-import {TodoCmp} from './todo/components/todo-cmp';
+import {TodoComponent} from './todo/components/todo.component';
 
-bootstrap(TodoCmp, [HTTP_PROVIDERS]);
+bootstrap(TodoComponent, [HTTP_PROVIDERS]);

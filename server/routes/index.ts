@@ -9,6 +9,7 @@ var passport = require('passport');
 var express    = require('express');
 var bodyParser = require("body-parser");
 var jwt        = require('jwt-simple');
+var config = require('../config/db.conf');
 
 
 export class Routes {
@@ -84,7 +85,7 @@ export class Routes {
                 user.comparePassword(req.body.password, function (err, isMatch) {
                     if (isMatch && !err) {
                     // if user is found and password is right create a token
-                    var token = jwt.encode(user, 'GenAppIsAwesome');
+                    var token = jwt.encode(user, config.secret);
                     // return the information including token as JSON
                     res.json({success: true, token: 'JWT ' + token});
                     } else {
@@ -99,7 +100,7 @@ export class Routes {
             function(req, res) {
                 var token = getToken(req.headers);
                 if (token) {
-                    var decoded = jwt.decode(token, 'GenAppIsAwesome');
+                    var decoded = jwt.decode(token, config.secret);
                     User.findOne({
                     name: decoded.name
                     }, function(err, user) {

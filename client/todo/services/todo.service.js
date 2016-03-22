@@ -19,8 +19,12 @@ var TodoService = (function () {
         this._http = _http;
     }
     TodoService.prototype.getAll = function () {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        var authToken = localStorage.getItem('auth_token');
+        headers.append('Authorization', "Bearer " + authToken);
         return this._http
-            .get(TodoService.ENDPOINT.replace(':id', ''))
+            .get(TodoService.ENDPOINT.replace(':id', ''), { headers: headers })
             .map(function (r) { return r.json(); });
     };
     TodoService.prototype.add = function (message) {

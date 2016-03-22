@@ -4,7 +4,7 @@ import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'login',
-  template: `...`
+  template: `../templates/login.html`
 })
 export class LoginComponent {
   constructor(
