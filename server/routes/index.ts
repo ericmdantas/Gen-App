@@ -14,41 +14,16 @@ var config = require('../config/db.conf');
 
 export class Routes {
    static init(app:Object, router:Object) {
-     router.route('/api/private/*', Auth.isAuthenticated); //here goes the passport auth parameter...
+     router.route('/api/private/*', Auth.isAuthenticated); 
      TodoRoutes.init(router);
 
      router
        .route('*')
-       //.get(StaticDispatcher.sendIndex);
 
      app.use('/', router);
      app.use(bodyParser.urlencoded({ extended: false }));
      app.use(bodyParser.json());
      app.use(passport.initialize());
-     /*
-     app.get("/", function(req, res){ 
-		if(req.isAuthenticated()){
-		  res.render("home", { user : req.user}); 
-		} else {
-			res.render("home", { user : null});
-		}
-	 });
-     
-/*     app.get("/login", function(req, res){ 
-		res.render("login");
-	});
-
-	app.post("/login", passport.authenticate('local', {
-			successRedirect : "/",
-			failureRedirect : "/login",
-		})
-	);
-
-	app.get("/signup", function (req, res) {
-		res.render("signup");
-	});
-*/
-    //app.use("/signup", bodyParser.urlencoded({ extended: false }));
     
 	app.post("/signup", function (req, res, next) {
 		 if (!req.body.email || !req.body.password) {
@@ -70,8 +45,6 @@ export class Routes {
                 });
             }
         });
-        
-        //app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
         
         app.post("/authenticate", function (req, res) {
             User.findOne({

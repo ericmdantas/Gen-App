@@ -1,4 +1,4 @@
-/// <reference path="../../typings/main.d.ts" />
+/// <reference path="../../typings/tsd.d.ts" />
 "use strict";
 var fs = require('fs');
 var StaticDispatcher = (function () {

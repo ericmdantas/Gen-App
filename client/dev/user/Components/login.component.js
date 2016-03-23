@@ -10,27 +10,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
-var todo_component_1 = require('./todo/components/todo.component');
-var loggedinRouterOutlet_1 = require('./user/services/loggedinRouterOutlet');
-var AppComponent = (function () {
-    function AppComponent() {
+var user_service_1 = require('../services/user.service');
+var LoginComponent = (function () {
+    function LoginComponent(userService, router) {
+        this.userService = userService;
+        this.router = router;
     }
-    AppComponent = __decorate([
-        core_1.Component({
-            selector: 'app',
-            directives: [loggedinRouterOutlet_1.LoggedInRouterOutlet],
-            template: "\n  <div class=\"container body-container\">\n    <router-outlet></router-outlet>\n  </div>\n  "
-        }),
-        router_1.RouteConfig([
-            {
-                path: '/home',
-                name: 'Home',
-                component: todo_component_1.TodoComponent,
-                useAsDefault: true
+    LoginComponent.prototype.onSubmit = function (email, password) {
+        var _this = this;
+        this.userService.login(email, password).subscribe(function (result) {
+            if (result) {
+                _this.router.navigate(['Home']);
             }
-        ]), 
-        __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+        });
+    };
+    LoginComponent = __decorate([
+        core_1.Component({
+            selector: 'login',
+            template: "../templates/login.html"
+        }), 
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
+    ], LoginComponent);
+    return LoginComponent;
 }());
-exports.AppComponent = AppComponent;
+exports.LoginComponent = LoginComponent;

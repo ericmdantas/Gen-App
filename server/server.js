@@ -8,7 +8,6 @@ var os = require('os');
 var routes_conf_1 = require('./config/routes.conf');
 var db_conf_1 = require('./config/db.conf');
 var passport_1 = require('./config/passport');
-//var passport = require('./config/passport');
 var index_1 = require('./routes/index');
 var app = express();
 var server = app.listen(PORT);

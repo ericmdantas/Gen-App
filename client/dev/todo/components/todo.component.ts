@@ -1,6 +1,5 @@
 import {
   Component,
-  View,
   Inject,
   OnInit
 } from 'angular2/core';
@@ -12,6 +11,8 @@ import {
   Control
 } from 'angular2/common';
 
+import { Router } from 'angular2/router';
+
 import {TodoService} from '../services/todo.service';
 
 type Todo = {
@@ -21,11 +22,11 @@ type Todo = {
 
 @Component({
   selector: 'todo-cmp',
-  templateUrl: 'client/todo/templates/todo.html',
-  styleUrls: ['client/todo/styles/todo.css'],
-  providers: [TodoService]
+  templateUrl: 'client/dev/todo/templates/todo.html',
+  styleUrls: ['client/dev/todo/styles/todo.css'],
+  providers: []
 })
-export class TodoComponent implements OnInit {
+export class TodoCmp implements OnInit {
   title: string = "ng2do";
   todos: Todo[] = [];
   todoForm: ControlGroup;

@@ -7,43 +7,19 @@ var passport = require('passport');
 var express = require('express');
 var bodyParser = require("body-parser");
 var jwt = require('jwt-simple');
+var config = require('../config/db.conf');
 var Routes = (function () {
     function Routes() {
     }
     Routes.init = function (app, router) {
-        router.route('/api/private/*', Auth.isAuthenticated); //here goes the passport auth parameter...
+        router.route('/api/private/*', Auth.isAuthenticated);
         todo_routes_1.TodoRoutes.init(router);
         router
             .route('*');
-        //.get(StaticDispatcher.sendIndex);
         app.use('/', router);
         app.use(bodyParser.urlencoded({ extended: false }));
         app.use(bodyParser.json());
         app.use(passport.initialize());
-        /*
-        app.get("/", function(req, res){
-           if(req.isAuthenticated()){
-             res.render("home", { user : req.user});
-           } else {
-               res.render("home", { user : null});
-           }
-        });
-        
-   /*     app.get("/login", function(req, res){
-           res.render("login");
-       });
-   
-       app.post("/login", passport.authenticate('local', {
-               successRedirect : "/",
-               failureRedirect : "/login",
-           })
-       );
-   
-       app.get("/signup", function (req, res) {
-           res.render("signup");
-       });
-   */
-        //app.use("/signup", bodyParser.urlencoded({ extended: false }));
         app.post("/signup", function (req, res, next) {
             if (!req.body.email || !req.body.password) {
                 res.json({ success: false, msg: 'Please pass name and password.' });
@@ -65,7 +41,6 @@ var Routes = (function () {
                 });
             }
         });
-        //app.use("/authenticate", bodyParser.urlencoded({ extended: false }));
         app.post("/authenticate", function (req, res) {
             User.findOne({
                 email: req.body.email
@@ -80,7 +55,7 @@ var Routes = (function () {
                     user.comparePassword(req.body.password, function (err, isMatch) {
                         if (isMatch && !err) {
                             // if user is found and password is right create a token
-                            var token = jwt.encode(user, 'GenAppIsAwesome');
+                            var token = jwt.encode(user, config.secret);
                             // return the information including token as JSON
                             res.json({ success: true, token: 'JWT ' + token });
                         }
@@ -94,7 +69,7 @@ var Routes = (function () {
         app.get('/memberinfo', passport.authenticate('jwt', { session: false }), function (req, res) {
             var token = getToken(req.headers);
             if (token) {
-                var decoded = jwt.decode(token, 'GenAppIsAwesome');
+                var decoded = jwt.decode(token, config.secret);
                 User.findOne({
                     name: decoded.name
                 }, function (err, user) {

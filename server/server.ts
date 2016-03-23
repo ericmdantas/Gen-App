@@ -11,8 +11,7 @@ import * as express from 'express';
 import * as os from 'os';
 import {RoutesConfig} from './config/routes.conf';
 import {DBConfig} from './config/db.conf';
-import {Passport} from './config/passport'
-//var passport = require('./config/passport');
+import {Passport} from './config/passport';
 import {Routes} from './routes/index';
 
 const app = express();
