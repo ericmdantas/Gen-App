@@ -1,20 +1,19 @@
+
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "target": "es5",
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "noImplicitAny": false
-    },
-    "exclude": [
-	    "node_modules",
-      "typings"
-    ],
-    "filesGlob": [
-      "**/*.ts",
-      "typings/main.d.ts",
-      "node_modules/angular2/typings/browser.d.ts"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "system",
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "removeComments": false,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true
+  },
+  "exclude": [
+    "node_modules",
+    "typings/main.d.ts",
+    "typings/main"
+  ]
 }

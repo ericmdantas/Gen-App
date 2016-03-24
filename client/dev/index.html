@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>ng2do</title>
@@ -6,27 +7,28 @@
 
     <!-- 1. Load libraries -->
     <!-- IE required polyfills, in this exact order -->
+   <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/es6-shim/es6-shim.min.js"></script>
     <script src="node_modules/systemjs/dist/system-polyfills.js"></script>
     <script src="node_modules/angular2/es6/dev/src/testing/shims_for_IE.js"></script>   
 
-    <script src="node_modules/angular2/bundles/angular2-polyfills.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
 
     <!-- 2. Configure SystemJS -->
     <script>
-        System.config({
-            "./client/dev": {        
-            app: {
-                format: 'register',
-                defaultExtension: 'js'
-            }
-            }
-        });
-        System.import('client/dev/main')
-                .then(null, console.error.bind(console));
+    System.config({
+        packages: {       
+        "client/dev": { // this line changed, here the directory where your generated `js` files are, has to be specified 
+            format: 'register',
+            defaultExtension: 'js'
+        }
+        },
+        transpiler: 'typescript'
+    });
+    System.import('client/dev/main')
+            .then(null, console.error.bind(console));
     </script>
   </head>
 
@@ -35,3 +37,4 @@
     <my-app>Loading...</my-app>
   </body>
 </html>
+
