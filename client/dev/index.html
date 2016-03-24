@@ -17,16 +17,16 @@
 
     <!-- 2. Configure SystemJS -->
     <script>
-      System.config({
-        packages: {        
-          app: {
-            format: 'register',
-            defaultExtension: 'js'
-          }
-        }
-      });
-      System.import('client/dev/main.js')
-            .then(null, console.error.bind(console));
+        System.config({
+            "./client/dev": {        
+            app: {
+                format: 'register',
+                defaultExtension: 'js'
+            }
+            }
+        });
+        System.import('client/dev/main')
+                .then(null, console.error.bind(console));
     </script>
   </head>
 
