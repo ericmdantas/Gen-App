@@ -7,7 +7,7 @@ var passport = require('passport');
 var express = require('express');
 var bodyParser = require("body-parser");
 var jwt = require('jwt-simple');
-var config = require('../config/db.conf');
+var db_conf_1 = require('../config/db.conf');
 var Routes = (function () {
     function Routes() {
     }
@@ -55,7 +55,7 @@ var Routes = (function () {
                     user.comparePassword(req.body.password, function (err, isMatch) {
                         if (isMatch && !err) {
                             // if user is found and password is right create a token
-                            var token = jwt.encode(user, config.secret);
+                            var token = jwt.encode(user, db_conf_1.DBConfig.secret);
                             // return the information including token as JSON
                             res.json({ success: true, token: 'JWT ' + token });
                         }
@@ -69,7 +69,7 @@ var Routes = (function () {
         app.get('/memberinfo', passport.authenticate('jwt', { session: false }), function (req, res) {
             var token = getToken(req.headers);
             if (token) {
-                var decoded = jwt.decode(token, config.secret);
+                var decoded = jwt.decode(token, db_conf_1.DBConfig.secret);
                 User.findOne({
                     name: decoded.name
                 }, function (err, user) {
