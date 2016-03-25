@@ -13,14 +13,11 @@ export class UserService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
 
-    return this.http
-      .post(
-        '/authenticate', 
-        JSON.stringify({ email, password }), 
-        { headers }
-      )
+    return this._http
+      .post('/authenticate', JSON.stringify({ email, password }), { headers })
       .map(res => res.json())
       .map((res) => {
+          console.log(res.success);
         if (res.success) {
           localStorage.setItem('auth_token', res.auth_token);
           this.loggedIn = true;

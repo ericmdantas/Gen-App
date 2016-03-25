@@ -2,10 +2,9 @@ import { Component } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import {TodoService} from './todo/services/todo.service';
+import { UserService } from './user/services/user.service';
 import { TodoCmp } from './todo/components/todo.component';
 import { LoginComponent } from './user/components/login.component';
-import { UserService } from './user/services/user.service';
-
 
 @Component({
   selector: 'my-app',

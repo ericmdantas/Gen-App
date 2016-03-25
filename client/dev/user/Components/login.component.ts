@@ -1,23 +1,42 @@
-import { Component } from 'angular2/core';
+import {
+  Component,
+  Inject,
+  OnInit
+} from 'angular2/core';
+
+import {
+  Validators,
+  FormBuilder,
+  ControlGroup,
+  Control
+} from 'angular2/common';
+
 import { Router } from 'angular2/router';
 import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'login',
   templateUrl: 'client/dev/user/templates/login.html',
-  styleUrls: ['client/dev/todo/styles/todo.css'],
+  styleUrls: ['client/dev/user/styles/user.css'],
   providers: []
 })
 export class LoginComponent {
-  constructor(
-    private userService: UserService, 
-    private router: Router
-  ) { }
+    title: string = "Log In";
+    loginForm: ControlGroup;
 
-  onSubmit(email, password) {
-    this.userService.login(email, password).subscribe((result) => {
+  constructor( @Inject(FormBuilder) fb:FormBuilder, @Inject(UserService) private _userService: UserService) {
+    this.loginForm = fb.group({
+      "email": ["", Validators.required],
+      "password": ["", Validators.required]
+    });
+  }
+
+  onSubmit(credentials):void {
+      console.log("on SUbmit here");
+    this._userService.login(credentials.email, credentials.password)
+    .subscribe((result) => {
       if (result) {
-        this.router.navigate(['Home']);
+        console.log("Link to Todo?")
       }
     });
   }

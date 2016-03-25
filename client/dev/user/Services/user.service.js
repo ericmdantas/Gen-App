@@ -23,10 +23,11 @@ var UserService = (function () {
         var _this = this;
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
-        return this.http
+        return this._http
             .post('/authenticate', JSON.stringify({ email: email, password: password }), { headers: headers })
             .map(function (res) { return res.json(); })
             .map(function (res) {
+            console.log(res.success);
             if (res.success) {
                 localStorage.setItem('auth_token', res.auth_token);
                 _this.loggedIn = true;

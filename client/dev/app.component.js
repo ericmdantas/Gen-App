@@ -11,9 +11,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var todo_service_1 = require('./todo/services/todo.service');
+var user_service_1 = require('./user/services/user.service');
 var todo_component_1 = require('./todo/components/todo.component');
 var login_component_1 = require('./user/components/login.component');
-var user_service_1 = require('./user/services/user.service');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'ng2do';
