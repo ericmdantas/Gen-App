@@ -4,7 +4,9 @@ import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'login',
-  template: `../templates/login.html`
+  templateUrl: 'client/dev/user/templates/login.html',
+  styleUrls: ['client/dev/todo/styles/todo.css'],
+  providers: []
 })
 export class LoginComponent {
   constructor(

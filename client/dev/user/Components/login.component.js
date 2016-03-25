@@ -27,7 +27,9 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
-            template: "../templates/login.html"
+            templateUrl: 'client/dev/user/templates/login.html',
+            styleUrls: ['client/dev/todo/styles/todo.css'],
+            providers: []
         }), 
         __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], LoginComponent);
