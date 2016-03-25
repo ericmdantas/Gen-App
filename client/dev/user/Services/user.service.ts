@@ -1,12 +1,11 @@
-import { Injectable } from 'angular2/core';
-import { Headers } from 'angular2/http';
-import { loalStorage } from 'localStorage';
+import { Injectable, Inject } from 'angular2/core';
+import { Headers, Http } from 'angular2/http';
 
 @Injectable()
 export class UserService {
   private loggedIn = false;
 
-  constructor(private http: Http) {
+  constructor(@Inject(Http) private _http: Http) {
     this.loggedIn = !!localStorage.getItem('auth_token');
   }
 

@@ -13,6 +13,7 @@ var router_1 = require('angular2/router');
 var todo_service_1 = require('./todo/services/todo.service');
 var todo_component_1 = require('./todo/components/todo.component');
 var login_component_1 = require('./user/components/login.component');
+var user_service_1 = require('./user/services/user.service');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'ng2do';
@@ -24,8 +25,8 @@ var AppComponent = (function () {
             styleUrls: ['client/dev/todo/styles/todo.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [
-                router_1.ROUTER_PROVIDERS,
-                todo_service_1.TodoService
+                todo_service_1.TodoService,
+                user_service_1.UserService
             ]
         }),
         router_1.RouteConfig([

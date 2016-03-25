@@ -1,5 +1,5 @@
 import { Component } from 'angular2/core';
-import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/router';
+import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import {TodoService} from './todo/services/todo.service';
 import { TodoCmp } from './todo/components/todo.component';
@@ -16,8 +16,8 @@ import { UserService } from './user/services/user.service';
   styleUrls: ['client/dev/todo/styles/todo.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [
-    ROUTER_PROVIDERS,
-    TodoService
+    TodoService,
+    UserService
   ]
 })
 @RouteConfig([
@@ -28,9 +28,9 @@ import { UserService } from './user/services/user.service';
     useAsDefault: true
   },
   {
-      path: '/login',
-      name: 'LoginComponent',
-      component: LoginComponent
+    path: '/login',
+    name: 'LoginComponent',
+    component: LoginComponent
   }
 ])
 
