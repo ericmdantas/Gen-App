@@ -10,7 +10,7 @@ import { TodoCmp } from './todo/components/todo.component';
     <h1>{{title}}</h1>
     <router-outlet></router-outlet>
   `,
-  styleUrls: ['client/dev/todo/app.component.css'],
+  styleUrls: ['client/dev/todo/styles/todo.css'],
   directives: [ROUTER_DIRECTIVES],
   providers: [
     ROUTER_PROVIDERS,
@@ -19,8 +19,8 @@ import { TodoCmp } from './todo/components/todo.component';
 })
 @RouteConfig([
   {
-    path: '/todo',
-    name: 'todo-cmp',
+    path: '/',
+    name: 'TodoCmp',
     component: TodoCmp,
     useAsDefault: true
   }
