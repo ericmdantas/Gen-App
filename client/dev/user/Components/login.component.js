@@ -13,10 +13,12 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
+var router_1 = require('angular2/router');
 var user_service_1 = require('../services/user.service');
 var LoginComponent = (function () {
-    function LoginComponent(fb, _userService) {
+    function LoginComponent(fb, _userService, _router) {
         this._userService = _userService;
+        this._router = _router;
         this.title = "Log In";
         this.loginForm = fb.group({
             "email": ["", common_1.Validators.required],
@@ -24,11 +26,13 @@ var LoginComponent = (function () {
         });
     }
     LoginComponent.prototype.onSubmit = function (credentials) {
+        var _this = this;
         console.log("on SUbmit here");
         this._userService.login(credentials.email, credentials.password)
             .subscribe(function (result) {
             if (result) {
                 console.log("Link to Todo?");
+                _this._router.navigate(['TodoCmp']);
             }
         });
     };
@@ -41,7 +45,7 @@ var LoginComponent = (function () {
         }),
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(user_service_1.UserService)), 
-        __metadata('design:paramtypes', [common_1.FormBuilder, user_service_1.UserService])
+        __metadata('design:paramtypes', [common_1.FormBuilder, user_service_1.UserService, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());

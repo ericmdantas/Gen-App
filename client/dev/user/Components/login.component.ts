@@ -24,7 +24,7 @@ export class LoginComponent {
     title: string = "Log In";
     loginForm: ControlGroup;
 
-  constructor( @Inject(FormBuilder) fb:FormBuilder, @Inject(UserService) private _userService: UserService) {
+  constructor( @Inject(FormBuilder) fb:FormBuilder, @Inject(UserService) private _userService: UserService, private _router: Router) {
     this.loginForm = fb.group({
       "email": ["", Validators.required],
       "password": ["", Validators.required]
@@ -36,7 +36,8 @@ export class LoginComponent {
     this._userService.login(credentials.email, credentials.password)
     .subscribe((result) => {
       if (result) {
-        console.log("Link to Todo?")
+        console.log("Link to Todo?");
+        this._router.navigate(['TodoCmp']);
       }
     });
   }
