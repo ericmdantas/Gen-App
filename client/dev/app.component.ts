@@ -3,6 +3,9 @@ import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS } from 'angular2/route
 
 import {TodoService} from './todo/services/todo.service';
 import { TodoCmp } from './todo/components/todo.component';
+import { LoginComponent } from './user/components/login.component';
+import { UserService } from './user/services/user.service';
+
 
 @Component({
   selector: 'my-app',
@@ -23,8 +26,14 @@ import { TodoCmp } from './todo/components/todo.component';
     name: 'TodoCmp',
     component: TodoCmp,
     useAsDefault: true
+  },
+  {
+      path: '/login',
+      name: 'LoginComponent',
+      component: LoginComponent
   }
 ])
+
 export class AppComponent {
   title = 'ng2do';
 }

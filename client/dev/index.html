@@ -17,8 +17,12 @@
     <script src="../../node_modules/reflect-metadata/Reflect.js"></script>
     <script>
       System.config({
-                      defaultJSExtensions: true
-                    });
+          map: {
+                localStorage: 'node_modules/localStorage/lib/localStorage.js'
+          },
+          defaultJSExtensions: true
+      });
+      
     </script>
     <script src="../../node_modules/rxjs/bundles/Rx.js"></script>
     <script src="../../node_modules/angular2/bundles/angular2-polyfills.js"></script>

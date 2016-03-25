@@ -10,12 +10,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('angular2/core');
 var http_1 = require('angular2/http');
-var localStorage_1 = require('localStorage');
 var UserService = (function () {
     function UserService(http) {
         this.http = http;
         this.loggedIn = false;
-        this.loggedIn = !!localStorage_1.default.getItem('auth_token');
+        this.loggedIn = !!localStorage.getItem('auth_token');
     }
     UserService.prototype.login = function (email, password) {
         var _this = this;
@@ -26,14 +25,14 @@ var UserService = (function () {
             .map(function (res) { return res.json(); })
             .map(function (res) {
             if (res.success) {
-                localStorage_1.default.setItem('auth_token', res.auth_token);
+                localStorage.setItem('auth_token', res.auth_token);
                 _this.loggedIn = true;
             }
             return res.success;
         });
     };
     UserService.prototype.logout = function () {
-        localStorage_1.default.removeItem('auth_token');
+        localStorage.removeItem('auth_token');
         this.loggedIn = false;
     };
     UserService.prototype.isLoggedIn = function () {
@@ -41,7 +40,7 @@ var UserService = (function () {
     };
     UserService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [http_1.Http])
+        __metadata('design:paramtypes', [Object])
     ], UserService);
     return UserService;
 }());

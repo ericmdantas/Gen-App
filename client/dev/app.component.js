@@ -12,6 +12,7 @@ var core_1 = require('angular2/core');
 var router_1 = require('angular2/router');
 var todo_service_1 = require('./todo/services/todo.service');
 var todo_component_1 = require('./todo/components/todo.component');
+var login_component_1 = require('./user/components/login.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'ng2do';
@@ -33,6 +34,11 @@ var AppComponent = (function () {
                 name: 'TodoCmp',
                 component: todo_component_1.TodoCmp,
                 useAsDefault: true
+            },
+            {
+                path: '/login',
+                name: 'LoginComponent',
+                component: login_component_1.LoginComponent
             }
         ]), 
         __metadata('design:paramtypes', [])
