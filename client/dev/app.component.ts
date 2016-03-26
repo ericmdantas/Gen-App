@@ -5,6 +5,7 @@ import {TodoService} from './todo/services/todo.service';
 import { UserService } from './user/services/user.service';
 import { TodoCmp } from './todo/components/todo.component';
 import { LoginComponent } from './user/components/login.component';
+import { SignupComponent } from './user/components/signup.component';
 
 @Component({
   selector: 'my-app',
@@ -30,6 +31,11 @@ import { LoginComponent } from './user/components/login.component';
     path: '/login',
     name: 'LoginComponent',
     component: LoginComponent
+  },
+  {
+    path: '/signup',
+    name: 'SignupComponent',
+    component: SignupComponent
   }
 ])
 

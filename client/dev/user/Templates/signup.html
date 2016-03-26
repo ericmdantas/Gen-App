@@ -1,0 +1,39 @@
+<div class="user-container">
+        <h1>Sign Up</h1>
+
+        <form (ngSubmit)="onSubmit(signUpForm.value)" [ngFormModel]="signUpForm">
+           <div class="form-group">
+                <label for="signup-firstName">First Name</label>
+                <input type="text" [ngFormControl]="signUpForm.controls['firstName']" #firstName="ngForm" class="form-control" id="signup-firstName">
+            </div>     
+            <div *ngIf="firstName.control.hasError('required') && firstName.control.touched" class="alert alert-danger">
+                First Name is required
+            </div>  
+            <div class="form-group">
+                <label for="signup-lastName">Last Name</label>
+                <input type="text" [ngFormControl]="signUpForm.controls['lastName']" #lastName="ngForm" class="form-control" id="signup-lastName">
+            </div>     
+            <div *ngIf="lastName.control.hasError('required') && lastName.control.touched" class="alert alert-danger">
+                Last Name is required
+            </div>
+            <div class="form-group">
+                <label for="signUp-email">Email</label>
+                <input type="text" [ngFormControl]="signUpForm?.controls['email']" #email="ngForm" class="form-control" id="signUp-email">
+            </div>
+            <div *ngIf="email.control.hasError('required') && email.control.touched" class="alert alert-danger">
+                Email is required
+            </div>
+            <div *ngIf="email.control.hasError('email') && email.control.touched" class="alert alert-danger">
+                Email is invalid
+            </div>
+            <div class="form-group">
+                <label for="signUp-password">Password</label>
+                <input type="password" [ngFormControl]="signUpForm.controls['password']" #password="ngForm" class="form-control" id="login-password">
+            </div>
+            <div *ngIf="password.control.hasError('required') && password.control.touched" class="alert alert-danger">
+                Password is required
+            </div>
+
+            <button type="submit" [disabled]="!signUpForm.valid" class="btn btn-primary">Login</button>
+        </form>
+</div>

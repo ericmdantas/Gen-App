@@ -27,6 +27,18 @@ export class UserService {
       });
   }
   
+  signUp(firstName, lastName, email, password) {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this._http
+      .post('/signup', JSON.stringify({ firstName, lastName, email, password }), { headers })
+      .map(res => res.json())
+      .map((res) => {
+        console.log(res.success);
+        return res.success;
+      });
+  }
+  
   logout() {
     localStorage.removeItem('auth_token');
     this.loggedIn = false;

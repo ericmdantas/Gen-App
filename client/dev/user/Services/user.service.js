@@ -35,6 +35,17 @@ var UserService = (function () {
             return res.success;
         });
     };
+    UserService.prototype.signUp = function (firstName, lastName, email, password) {
+        var headers = new http_1.Headers();
+        headers.append('Content-Type', 'application/json');
+        return this._http
+            .post('/signup', JSON.stringify({ firstName: firstName, lastName: lastName, email: email, password: password }), { headers: headers })
+            .map(function (res) { return res.json(); })
+            .map(function (res) {
+            console.log(res.success);
+            return res.success;
+        });
+    };
     UserService.prototype.logout = function () {
         localStorage.removeItem('auth_token');
         this.loggedIn = false;
