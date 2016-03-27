@@ -34,8 +34,8 @@ var AppComponent = (function () {
         router_1.RouteConfig([
             {
                 path: '/',
-                name: 'TodoCmp',
-                component: todo_component_1.TodoCmp,
+                name: 'TodoComponent',
+                component: todo_component_1.TodoComponent,
                 useAsDefault: true
             },
             {

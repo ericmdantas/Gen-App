@@ -8,6 +8,8 @@ import { UserService } from '../user/services/user.service';
   template: `
   <div class="nav">
     <a [routerLink]="['LoginComponent']" *ngIf="_userService.isLoggedIn()">Login</a>
+    <a [routerLink]="['SignupComponent']" *ngIf="_userService.isLoggedIn()">Sign Up</a>
+    <a [routerLink]="['TodoComponent']" *ngIf="!_userService.isLoggedIn()">ToDo</a>
   </div>
   `,
   styleUrls: ['client/dev/todo/styles/todo.css'],

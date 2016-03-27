@@ -14,8 +14,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
 var todo_service_1 = require('../services/todo.service');
-var TodoCmp = (function () {
-    function TodoCmp(fb, _todoService) {
+var TodoComponent = (function () {
+    function TodoComponent(fb, _todoService) {
         this._todoService = _todoService;
         this.title = "ng2do";
         this.todos = [];
@@ -23,10 +23,10 @@ var TodoCmp = (function () {
             "todoMessage": ["", common_1.Validators.required]
         });
     }
-    TodoCmp.prototype.ngOnInit = function () {
+    TodoComponent.prototype.ngOnInit = function () {
         this._getAll();
     };
-    TodoCmp.prototype._getAll = function () {
+    TodoComponent.prototype._getAll = function () {
         var _this = this;
         this._todoService
             .getAll()
@@ -34,7 +34,7 @@ var TodoCmp = (function () {
             _this.todos = todos;
         });
     };
-    TodoCmp.prototype.add = function (message) {
+    TodoComponent.prototype.add = function (message) {
         var _this = this;
         this._todoService
             .add(message)
@@ -43,7 +43,7 @@ var TodoCmp = (function () {
             _this.todoForm.controls['todoMessage'].updateValue("");
         });
     };
-    TodoCmp.prototype.remove = function (id) {
+    TodoComponent.prototype.remove = function (id) {
         var _this = this;
         this._todoService
             .remove(id)
@@ -54,7 +54,7 @@ var TodoCmp = (function () {
             });
         });
     };
-    TodoCmp = __decorate([
+    TodoComponent = __decorate([
         core_1.Component({
             selector: 'todo-cmp',
             templateUrl: 'client/dev/todo/templates/todo.html',
@@ -64,7 +64,7 @@ var TodoCmp = (function () {
         __param(0, core_1.Inject(common_1.FormBuilder)),
         __param(1, core_1.Inject(todo_service_1.TodoService)), 
         __metadata('design:paramtypes', [common_1.FormBuilder, todo_service_1.TodoService])
-    ], TodoCmp);
-    return TodoCmp;
+    ], TodoComponent);
+    return TodoComponent;
 }());
-exports.TodoCmp = TodoCmp;
+exports.TodoComponent = TodoComponent;
