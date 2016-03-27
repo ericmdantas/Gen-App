@@ -14,6 +14,7 @@ import {
 import { Router } from 'angular2/router';
 
 import {TodoService} from '../services/todo.service';
+import {NavComponent} from '../../nav/nav.component';
 
 type Todo = {
   todoMessage: string;

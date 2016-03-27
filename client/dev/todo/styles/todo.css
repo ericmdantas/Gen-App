@@ -73,3 +73,14 @@
 .todo-container .todo-item:hover {
   background-color: #f1f2f3;
 }
+
+.nav{
+    margin: -8px;
+    width: 100%;
+    font-size: 30px;
+    background-color: steelblue;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    font-family: "Roboto";
+}

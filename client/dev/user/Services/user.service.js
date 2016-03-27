@@ -38,8 +38,13 @@ var UserService = (function () {
     UserService.prototype.signUp = function (firstName, lastName, email, password) {
         var headers = new http_1.Headers();
         headers.append('Content-Type', 'application/json');
+        var user = new URLSearchParams();
+        user.set('email', email);
+        user.set('password', password);
+        user.set('firstName', firstName);
+        user.set('lastName', lastName);
         return this._http
-            .post('/signup', JSON.stringify({ firstName: firstName, lastName: lastName, email: email, password: password }), { headers: headers })
+            .post('/signup', user.toString(), { headers: headers })
             .map(function (res) { return res.json(); })
             .map(function (res) {
             console.log(res.success);

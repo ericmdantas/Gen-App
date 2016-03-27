@@ -15,6 +15,7 @@ var user_service_1 = require('./user/services/user.service');
 var todo_component_1 = require('./todo/components/todo.component');
 var login_component_1 = require('./user/components/login.component');
 var signup_component_1 = require('./user/components/signup.component');
+var nav_component_1 = require('./nav/nav.component');
 var AppComponent = (function () {
     function AppComponent() {
         this.title = 'ng2do';
@@ -22,9 +23,9 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "\n    <h1>{{title}}</h1>\n    <router-outlet></router-outlet>\n  ",
+            template: "\n    <nav-bar></nav-bar>\n    <router-outlet></router-outlet>\n  ",
             styleUrls: ['client/dev/todo/styles/todo.css'],
-            directives: [router_1.ROUTER_DIRECTIVES],
+            directives: [router_1.ROUTER_DIRECTIVES, nav_component_1.NavComponent],
             providers: [
                 todo_service_1.TodoService,
                 user_service_1.UserService

@@ -30,8 +30,15 @@ export class UserService {
   signUp(firstName, lastName, email, password) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    
+      let user = new URLSearchParams();
+        user.set('email', email);
+        user.set('password', password);
+        user.set('firstName', firstName);
+        user.set('lastName', lastName);
+  
     return this._http
-      .post('/signup', JSON.stringify({ firstName, lastName, email, password }), { headers })
+      .post('/signup', user.toString(), { headers })
       .map(res => res.json())
       .map((res) => {
         console.log(res.success);
