@@ -1,4 +1,4 @@
-import { Component } from 'angular2/core';
+import { Component, Inject } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
 import { UserService } from '../user/services/user.service';
@@ -7,16 +7,16 @@ import { UserService } from '../user/services/user.service';
   selector: 'nav-bar',
   template: `
   <div class="nav">
-    <a [routerLink]="['LoginComponent']">Login</a>
+    <a [routerLink]="['LoginComponent']" *ngIf="_userService.isLoggedIn()">Login</a>
   </div>
   `,
   styleUrls: ['client/dev/todo/styles/todo.css'],
   directives: [ROUTER_DIRECTIVES],
-  providers: [
-    UserService
-  ]
+  providers: [ UserService ]
 })
 
 export class NavComponent {
-  title = 'ng2do';
+    
+    constructor(@Inject(UserService) private _userService: UserService) {}
+    
 }
