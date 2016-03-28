@@ -6,7 +6,7 @@ export class UserService {
   private loggedIn = false;
 
   constructor(@Inject(Http) private _http: Http) {
-    this.loggedIn = !!localStorage.getItem('auth_token');
+    this.loggedIn = !!localStorage.getItem('id_token');
   }
 
   login(email, password) {
@@ -19,7 +19,7 @@ export class UserService {
       .map((res) => {
           console.log(res.success);
         if (res.success) {
-          localStorage.setItem('auth_token', res.auth_token);
+          localStorage.setItem('id_token', res.id_token);
           this.loggedIn = true;
         }
 
@@ -47,12 +47,11 @@ export class UserService {
   }
   
   logout() {
-    localStorage.removeItem('auth_token');
+    localStorage.removeItem('id_token');
     this.loggedIn = false;
   }
 
   isLoggedIn() {
-    //return this.loggedIn;
-    return false;
+    return this.loggedIn;
   }
 }

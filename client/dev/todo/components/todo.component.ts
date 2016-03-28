@@ -11,16 +11,17 @@ import {
   Control
 } from 'angular2/common';
 
-import { Router } from 'angular2/router';
-
+import { Router, CanActivate } from 'angular2/router';
+import {tokenNotExpired} from '../../../../node_modules/angular2-jwt/angular2-jwt'; //provides the tokenNotExpired() method
 import {TodoService} from '../services/todo.service';
 import {NavComponent} from '../../nav/nav.component';
+
 
 type Todo = {
   todoMessage: string;
   _id: string;
 }
-
+@CanActivate(() => tokenNotExpired()) //Only show component if the user has a JWT and it hasn't expired 
 @Component({
   selector: 'todo-cmp',
   templateUrl: 'client/dev/todo/templates/todo.html',
