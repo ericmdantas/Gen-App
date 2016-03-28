@@ -56,8 +56,7 @@ var UserService = (function () {
         this.loggedIn = false;
     };
     UserService.prototype.isLoggedIn = function () {
-        //return this.loggedIn;
-        return false;
+        return this.loggedIn;
     };
     UserService = __decorate([
         core_1.Injectable(),

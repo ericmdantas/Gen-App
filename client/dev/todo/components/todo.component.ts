@@ -11,16 +11,17 @@ import {
   Control
 } from 'angular2/common';
 
-import { Router } from 'angular2/router';
-
+import { Router, CanActivate } from 'angular2/router';
+import {tokenNotExpired} from '../../../../node_modules/angular2-jwt/angular2-jwt';
 import {TodoService} from '../services/todo.service';
 import {NavComponent} from '../../nav/nav.component';
+
 
 type Todo = {
   todoMessage: string;
   _id: string;
 }
-
+@CanActivate(() => tokenNotExpired())
 @Component({
   selector: 'todo-cmp',
   templateUrl: 'client/dev/todo/templates/todo.html',

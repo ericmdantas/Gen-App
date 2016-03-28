@@ -13,6 +13,8 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var core_1 = require('angular2/core');
 var common_1 = require('angular2/common');
+var router_1 = require('angular2/router');
+var angular2_jwt_1 = require('../../../../node_modules/angular2-jwt/angular2-jwt');
 var todo_service_1 = require('../services/todo.service');
 var TodoComponent = (function () {
     function TodoComponent(fb, _todoService) {
@@ -55,6 +57,7 @@ var TodoComponent = (function () {
         });
     };
     TodoComponent = __decorate([
+        router_1.CanActivate(function () { return angular2_jwt_1.tokenNotExpired(); }),
         core_1.Component({
             selector: 'todo-cmp',
             templateUrl: 'client/dev/todo/templates/todo.html',

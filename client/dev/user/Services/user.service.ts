@@ -52,7 +52,6 @@ export class UserService {
   }
 
   isLoggedIn() {
-    //return this.loggedIn;
-    return false;
+    return this.loggedIn;
   }
 }
