@@ -8,7 +8,8 @@ var Auth = require('../middleware/authorization.js');
 var passport = require('passport');
 var express    = require('express');
 var bodyParser = require("body-parser");
-var jwt        = require('jwt-simple');
+var jwt        = require('jsonwebtoken');
+var  _         = require('lodash');
 import {DBConfig} from '../config/db.conf';
 
 
@@ -24,6 +25,10 @@ export class Routes {
      app.use(bodyParser.urlencoded({ extended: false }));
      app.use(bodyParser.json());
      app.use(passport.initialize());
+     
+     function createToken(user) {
+        return jwt.sign(_.omit(user, 'password'), DBConfig.secret, { expiresInMinutes: 60*5 });
+     }
     
 	app.post("/signup", function (req, res, next) {
 		 if (!req.body.email || !req.body.password) {
@@ -58,9 +63,8 @@ export class Routes {
                 user.comparePassword(req.body.password, function (err, isMatch) {
                     if (isMatch && !err) {
                     // if user is found and password is right create a token
-                    var token = jwt.encode(user, DBConfig.secret);
                     // return the information including token as JSON
-                    res.json({success: true, token: 'JWT ' + token});
+                    res.json({success: true, id_token: createToken(req.body.email)});
                     } else {
                     res.send({success: false, msg: 'Authentication failed. Wrong password.'});
                     }

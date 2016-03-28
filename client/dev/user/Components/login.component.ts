@@ -37,7 +37,7 @@ export class LoginComponent {
     .subscribe((result) => {
       if (result) {
         console.log("Link to Todo?");
-        this._router.navigate(['TodoCmp']);
+        this._router.navigate(['TodoComponent']);
       }
     });
   }

@@ -17,7 +17,7 @@ var UserService = (function () {
     function UserService(_http) {
         this._http = _http;
         this.loggedIn = false;
-        this.loggedIn = !!localStorage.getItem('auth_token');
+        this.loggedIn = !!localStorage.getItem('id_token');
     }
     UserService.prototype.login = function (email, password) {
         var _this = this;
@@ -29,7 +29,7 @@ var UserService = (function () {
             .map(function (res) {
             console.log(res.success);
             if (res.success) {
-                localStorage.setItem('auth_token', res.auth_token);
+                localStorage.setItem('id_token', res.id_token);
                 _this.loggedIn = true;
             }
             return res.success;
@@ -52,7 +52,7 @@ var UserService = (function () {
         });
     };
     UserService.prototype.logout = function () {
-        localStorage.removeItem('auth_token');
+        localStorage.removeItem('id_token');
         this.loggedIn = false;
     };
     UserService.prototype.isLoggedIn = function () {

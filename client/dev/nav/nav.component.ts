@@ -7,9 +7,10 @@ import { UserService } from '../user/services/user.service';
   selector: 'nav-bar',
   template: `
   <div class="nav">
-    <a [routerLink]="['LoginComponent']" *ngIf="_userService.isLoggedIn()">Login</a>
-    <a [routerLink]="['SignupComponent']" *ngIf="_userService.isLoggedIn()">Sign Up</a>
-    <a [routerLink]="['TodoComponent']" *ngIf="!_userService.isLoggedIn()">ToDo</a>
+    <a [routerLink]="['LoginComponent']" *ngIf="!_userService.isLoggedIn()">Login</a>
+    <a [routerLink]="['SignupComponent']" *ngIf="!_userService.isLoggedIn()">Sign Up</a>
+    <a [routerLink]="['TodoComponent']" *ngIf="_userService.isLoggedIn()">ToDo</a>
+    <button (click)="_userService.logout($event)" *ngIf="_userService.isLoggedIn()">Log Out</button>
   </div>
   `,
   styleUrls: ['client/dev/todo/styles/todo.css'],

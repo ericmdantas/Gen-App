@@ -32,7 +32,7 @@ var LoginComponent = (function () {
             .subscribe(function (result) {
             if (result) {
                 console.log("Link to Todo?");
-                _this._router.navigate(['TodoCmp']);
+                _this._router.navigate(['TodoComponent']);
             }
         });
     };
