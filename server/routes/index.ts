@@ -27,7 +27,7 @@ export class Routes {
      app.use(passport.initialize());
      
      function createToken(user) {
-        return jwt.sign(_.omit(user, 'password'), DBConfig.secret, { expiresInMinutes: 60*5 });
+        return jwt.sign(_.omit(user, 'password'), DBConfig.secret, { expiresIn: 60*5*60 });
      }
     
 	app.post("/signup", function (req, res, next) {

@@ -22,7 +22,7 @@ var Routes = (function () {
         app.use(bodyParser.json());
         app.use(passport.initialize());
         function createToken(user) {
-            return jwt.sign(_.omit(user, 'password'), db_conf_1.DBConfig.secret, { expiresInMinutes: 60 * 5 });
+            return jwt.sign(_.omit(user, 'password'), db_conf_1.DBConfig.secret, { expiresIn: 60 * 5 * 60 });
         }
         app.post("/signup", function (req, res, next) {
             if (!req.body.email || !req.body.password) {
