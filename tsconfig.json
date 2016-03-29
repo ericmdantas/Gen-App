@@ -9,12 +9,46 @@
         "noImplicitAny": false
     },
     "exclude": [
-	    "node_modules",
+        "node_modules",
         "typings"
     ],
     "filesGlob": [
-      "**/*.ts",
-      "typings/main.d.ts",
-      "node_modules/angular2/typings/browser.d.ts"
-    ]
+        "**/*.ts",
+        "typings/main.d.ts",
+        "node_modules/angular2/typings/browser.d.ts"
+    ],
+    "files": [
+        "client/dev/app.component.ts",
+        "client/dev/main.ts",
+        "client/dev/nav/nav.component.ts",
+        "client/dev/todo/components/todo.component.ts",
+        "client/dev/todo/services/todo.service.ts",
+        "client/dev/user/Components/login.component.ts",
+        "client/dev/user/Components/signup.component.ts",
+        "client/dev/user/Services/user.service.ts",
+        "server/api/Private/todo/controller/todo-controller.ts",
+        "server/api/Private/todo/dao/todo-dao.ts",
+        "server/api/Private/todo/model/todo-model.ts",
+        "server/api/Private/todo/routes/todo-routes.ts",
+        "server/api/Public/user/controller/userController.ts",
+        "server/api/Public/user/model/userModel.ts",
+        "server/api/Public/user/routes/userRoutes.ts",
+        "server/auth/local/index.ts",
+        "server/commons/static/index.ts",
+        "server/config/db.conf.ts",
+        "server/config/passport.ts",
+        "server/config/routes.conf.ts",
+        "server/routes/index.ts",
+        "server/server.ts",
+        "server/typings/express/express.d.ts",
+        "server/typings/lodash/lodash.d.ts",
+        "server/typings/mongoose/mongoose.d.ts",
+        "server/typings/node/node.d.ts",
+        "server/typings/tsd.d.ts",
+        "tests/client/todo/components/todo-cmp_test.ts",
+        "tests/client/todo/services/todo-service_test.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }
