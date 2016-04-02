@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var TodoDAO = require('../../../../server/api/private/todo/dao/todo.dao');
+var TodoDAO = require('../../../../server/api/private/todo/dao/todo-dao');
 var expect = require('chai').expect;
 var setupMongoose = require('../../_helpers/db').setupMongoose;
 var createTodos = require('../../_helpers/db').createTodos;
