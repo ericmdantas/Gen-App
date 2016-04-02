@@ -1,4 +1,4 @@
-var Todo = require('../../../server/Private/api/todo/dao/todo-dao.js');
+var Todo = require('../../../server/api/Private/todo/dao/todo-dao.js');
 var dbJson = require('./db.json').db.test.url;
 
 var _setupMongoose = function(mongoose) {
