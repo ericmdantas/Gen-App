@@ -1,4 +1,4 @@
-var Todo = require('../../../server/api/Private/todo/dao/todo-dao.js');
+var Todo = require('../../../server/api/Private/todo/dao/todo-dao').default;
 var dbJson = require('./db.json').db.test.url;
 
 var _setupMongoose = function(mongoose) {
@@ -14,7 +14,7 @@ var _createTodos = function() {
         _array.push({_id: '507c7f79bcf86cd7994f6c'+ (i + 10), todoMessage: 'aaaaaaa'+i});
     }
 
-    return Todo.create(_array);
+    return Todo.createTodo(_array);
 }
 
 exports.setupMongoose = _setupMongoose;
