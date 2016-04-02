@@ -21,7 +21,7 @@ var NavComponent = (function () {
     NavComponent = __decorate([
         core_1.Component({
             selector: 'nav-bar',
-            template: "\n  <div class=\"nav\">\n    <a [routerLink]=\"['LoginComponent']\" *ngIf=\"!_userService.isLoggedIn()\">Login</a>\n    <a [routerLink]=\"['SignupComponent']\" *ngIf=\"!_userService.isLoggedIn()\">Sign Up</a>\n    <a [routerLink]=\"['TodoComponent']\" *ngIf=\"_userService.isLoggedIn()\">ToDo</a>\n    <button (click)=\"_userService.logout($event)\" *ngIf=\"_userService.isLoggedIn()\">Log Out</button>\n  </div>\n  ",
+            template: "\n  <div *ngIf=\"!_userService.isLoggedIn()\" class=\"nav\">\n    <a [routerLink]=\"['LoginComponent']\">Login</a>\n    <a [routerLink]=\"['SignupComponent']\">Sign Up</a>\n  </div>\n  <div *ngIf=\"_userService.isLoggedIn()\" class=\"nav\">\n    <a [routerLink]=\"['TodoComponent']\">ToDo</a>\n    <button (click)=\"_userService.logout($event)\">Log Out</button>\n  </div>\n  ",
             styleUrls: ['client/dev/todo/styles/todo.css'],
             directives: [router_1.ROUTER_DIRECTIVES],
             providers: [user_service_1.UserService]
