@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/main.d.ts" />
+/// <reference path="../../../../server/typings/tsd.d.ts" />
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -10,8 +10,8 @@ var core_1 = require('angular2/core');
 var Observable_1 = require('rxjs/Observable');
 var testing_2 = require('angular2/testing');
 var browser_1 = require('angular2/platform/testing/browser');
-var todo_cmp_1 = require('../../../../client/dev/todo/components/todo-cmp');
-var todo_service_1 = require('../../../../client/dev/todo/services/todo-service');
+var todo_component_1 = require('../../../../client/dev/todo/components/todo.component');
+var todo_service_1 = require('../../../../client/dev/todo/services/todo.service');
 var MockTodoService = (function (_super) {
     __extends(MockTodoService, _super);
     function MockTodoService() {
@@ -39,14 +39,14 @@ testing_1.describe('todo_component', function () {
     testing_1.beforeEachProviders(function () { return [core_1.provide(todo_service_1.TodoService, { useClass: MockTodoService })]; });
     testing_1.describe('creation', function () {
         testing_1.it('should create the component correctly', testing_1.injectAsync([testing_1.TestComponentBuilder], function (tcb) {
-            return tcb.createAsync(todo_cmp_1.TodoCmp).then(function (fixture) {
+            return tcb.createAsync(todo_component_1.TodoComponent).then(function (fixture) {
                 fixture.detectChanges();
                 var compiled = fixture.debugElement.nativeElement;
                 testing_1.expect(compiled).toBeDefined();
             });
         }));
         testing_1.it('should inicialize the cmp correctly', testing_1.injectAsync([testing_1.TestComponentBuilder], function (tcb) {
-            return tcb.createAsync(todo_cmp_1.TodoCmp).then(function (fixture) {
+            return tcb.createAsync(todo_component_1.TodoComponent).then(function (fixture) {
                 var instance = fixture.debugElement.componentInstance;
                 spyOn(instance, '_getAll').and.callFake(function () { });
                 fixture.detectChanges();
@@ -54,7 +54,7 @@ testing_1.describe('todo_component', function () {
             });
         }));
         testing_1.it('should call add correctly', testing_1.injectAsync([testing_1.TestComponentBuilder], function (tcb) {
-            return tcb.createAsync(todo_cmp_1.TodoCmp).then(function (fixture) {
+            return tcb.createAsync(todo_component_1.TodoComponent).then(function (fixture) {
                 fixture.detectChanges();
                 var instance = fixture.debugElement.componentInstance;
                 var _todoMsg = 'yo';
@@ -62,7 +62,7 @@ testing_1.describe('todo_component', function () {
             });
         }));
         testing_1.it('should call remove correctly', testing_1.injectAsync([testing_1.TestComponentBuilder], function (tcb) {
-            return tcb.createAsync(todo_cmp_1.TodoCmp).then(function (fixture) {
+            return tcb.createAsync(todo_component_1.TodoComponent).then(function (fixture) {
                 fixture.detectChanges();
                 var instance = fixture.debugElement.componentInstance;
                 var _id = 'abc123';

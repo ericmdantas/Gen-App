@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/main.d.ts" />
+/// <reference path="../../../../server/typings/tsd.d.ts" />
 
 import {
   it,
@@ -6,7 +6,7 @@ import {
   describe
 } from 'angular2/testing';
 
-import {TodoService} from '../../../../client/dev/todo/services/todo-service';
+import {TodoService} from '../../../../client/dev/todo/services/todo.service';
 
 describe('todo_service', () => {
   describe('creation', () => {

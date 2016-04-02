@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/main.d.ts" />
+/// <reference path="../../../../server/typings/tsd.d.ts" />
 
 import {
   it,
@@ -25,8 +25,8 @@ import {
   TEST_BROWSER_APPLICATION_PROVIDERS
 } from 'angular2/platform/testing/browser';
 
-import {TodoCmp} from '../../../../client/dev/todo/components/todo-cmp';
-import {TodoService} from '../../../../client/dev/todo/services/todo-service';
+import {TodoComponent} from '../../../../client/dev/todo/components/todo.component';
+import {TodoService} from '../../../../client/dev/todo/services/todo.service';
 
 class MockTodoService extends TodoService {
   getAll():Observable<any> {
@@ -55,7 +55,7 @@ describe('todo_component', () => {
 
   describe('creation', () => {
     it('should create the component correctly', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      return tcb.createAsync(TodoCmp).then((fixture) => {
+      return tcb.createAsync(TodoComponent).then((fixture) => {
         fixture.detectChanges();
 
         let compiled = fixture.debugElement.nativeElement;
@@ -65,7 +65,7 @@ describe('todo_component', () => {
     }));
 
     it('should inicialize the cmp correctly', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      return tcb.createAsync(TodoCmp).then((fixture) => {
+      return tcb.createAsync(TodoComponent).then((fixture) => {
         let instance = fixture.debugElement.componentInstance;
 
         spyOn(instance, '_getAll').and.callFake(() => {});
@@ -77,7 +77,7 @@ describe('todo_component', () => {
     }));
 
     it('should call add correctly', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      return tcb.createAsync(TodoCmp).then((fixture) => {
+      return tcb.createAsync(TodoComponent).then((fixture) => {
         fixture.detectChanges();
 
         let instance = fixture.debugElement.componentInstance;
@@ -89,7 +89,7 @@ describe('todo_component', () => {
     }));
 
     it('should call remove correctly', injectAsync([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      return tcb.createAsync(TodoCmp).then((fixture) => {
+      return tcb.createAsync(TodoComponent).then((fixture) => {
         fixture.detectChanges();
 
         let instance = fixture.debugElement.componentInstance;

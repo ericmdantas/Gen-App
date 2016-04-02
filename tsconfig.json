@@ -46,7 +46,8 @@
         "server/typings/node/node.d.ts",
         "server/typings/tsd.d.ts",
         "tests/client/todo/components/todo-cmp_test.ts",
-        "tests/client/todo/services/todo-service_test.ts"
+        "tests/client/todo/services/todo-service_test.ts",
+        "src/1st.spec.ts"
     ],
     "atom": {
         "rewriteTsconfig": true

@@ -1,4 +1,4 @@
-/// <reference path="../../../../typings/main.d.ts" />
+/// <reference path="../../../../server/typings/tsd.d.ts" />
 "use strict";
 var testing_1 = require('angular2/testing');
 testing_1.describe('todo_service', function () {
