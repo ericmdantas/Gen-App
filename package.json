@@ -20,7 +20,6 @@
     "es6-shim": "^0.33.13",
     "express": "~4.12.3",
     "express-content-length-validator": "1.0.0",
-    "gulp-minify-css": "^1.2.4",
     "helmet": "^0.7.1",
     "jwt-simple": "^0.5.0",
     "localStorage": "^1.0.3",
