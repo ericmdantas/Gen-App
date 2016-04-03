@@ -1,5 +1,4 @@
 /// <reference path="../../../typings/main.d.ts" />
-"use strict";
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var _ = require('lodash');
@@ -43,3 +42,4 @@ todo_model_1.default.statics.deleteTodo = function (id) {
 var Todo = mongoose.model('Todo', todo_model_1.default);
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = Todo;
+//# sourceMappingURL=todo-dao.js.map

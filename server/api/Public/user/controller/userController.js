@@ -1,5 +1,4 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-"use strict";
 var User = require('../model/userModel');
 var UserController = (function () {
     function UserController() {
@@ -25,5 +24,6 @@ var UserController = (function () {
             .catch(function (error) { return res.status(400).json(error); });
     };
     return UserController;
-}());
+})();
 exports.UserController = UserController;
+//# sourceMappingURL=userController.js.map

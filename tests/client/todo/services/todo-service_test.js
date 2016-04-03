@@ -1,5 +1,4 @@
 /// <reference path="../../../../server/typings/tsd.d.ts" />
-"use strict";
 var testing_1 = require('angular2/testing');
 testing_1.describe('todo_service', function () {
     testing_1.describe('creation', function () {
@@ -7,3 +6,4 @@ testing_1.describe('todo_service', function () {
         });
     });
 });
+//# sourceMappingURL=todo-service_test.js.map

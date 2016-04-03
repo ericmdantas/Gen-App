@@ -13,6 +13,7 @@ var DBConfig = (function () {
     };
     DBConfig.secret = 'genappisawesome';
     return DBConfig;
-}());
+})();
 exports.DBConfig = DBConfig;
 ;
+//# sourceMappingURL=db.conf.js.map

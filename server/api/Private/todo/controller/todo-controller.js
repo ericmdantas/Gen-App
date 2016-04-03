@@ -1,5 +1,4 @@
 /// <reference path="../../../../typings/tsd.d.ts" />
-"use strict";
 var todo_dao_1 = require('../dao/todo-dao');
 var TodoController = (function () {
     function TodoController() {
@@ -25,5 +24,6 @@ var TodoController = (function () {
             .catch(function (error) { return res.status(400).json(error); });
     };
     return TodoController;
-}());
+})();
 exports.TodoController = TodoController;
+//# sourceMappingURL=todo-controller.js.map

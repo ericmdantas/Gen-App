@@ -1,5 +1,4 @@
 /// <reference path="../typings/tsd.d.ts" />
-"use strict";
 var todo_routes_1 = require('../api/private/todo/routes/todo-routes');
 var User = require('../api/public/user/model/userModel');
 var Auth = require('../middleware/authorization.js');
@@ -107,6 +106,7 @@ var Routes = (function () {
         };
     };
     return Routes;
-}());
+})();
 exports.Routes = Routes;
 ;
+//# sourceMappingURL=index.js.map

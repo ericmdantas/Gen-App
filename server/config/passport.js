@@ -1,4 +1,3 @@
-"use strict";
 var passport = require('passport');
 var JwtStrategy = require('passport-jwt').Strategy;
 var User = require('../api/public/user/model/userModel');
@@ -26,6 +25,7 @@ var Passport = (function () {
         }));
     };
     return Passport;
-}());
+})();
 exports.Passport = Passport;
 ;
+//# sourceMappingURL=passport.js.map

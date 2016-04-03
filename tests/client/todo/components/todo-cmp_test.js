@@ -1,5 +1,4 @@
 /// <reference path="../../../../server/typings/tsd.d.ts" />
-"use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -33,7 +32,7 @@ var MockTodoService = (function (_super) {
         });
     };
     return MockTodoService;
-}(todo_service_1.TodoService));
+})(todo_service_1.TodoService);
 testing_1.describe('todo_component', function () {
     testing_2.setBaseTestProviders(browser_1.TEST_BROWSER_PLATFORM_PROVIDERS, browser_1.TEST_BROWSER_APPLICATION_PROVIDERS);
     testing_1.beforeEachProviders(function () { return [core_1.provide(todo_service_1.TodoService, { useClass: MockTodoService })]; });
@@ -71,3 +70,4 @@ testing_1.describe('todo_component', function () {
         }));
     });
 });
+//# sourceMappingURL=todo-cmp_test.js.map

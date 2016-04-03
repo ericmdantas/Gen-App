@@ -14,5 +14,6 @@ var TodoRoutes = (function () {
             .delete(todo_controller_1.TodoController.deleteTodo);
     };
     return TodoRoutes;
-}());
+})();
 exports.TodoRoutes = TodoRoutes;
+//# sourceMappingURL=todo-routes.js.map

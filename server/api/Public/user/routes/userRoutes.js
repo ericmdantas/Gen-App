@@ -14,5 +14,6 @@ var UserRoutes = (function () {
             .delete(userController_1.UserController.deleteUser);
     };
     return UserRoutes;
-}());
+})();
 exports.UserRoutes = UserRoutes;
+//# sourceMappingURL=userRoutes.js.map
