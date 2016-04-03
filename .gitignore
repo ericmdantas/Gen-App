@@ -2,5 +2,6 @@
 node_modules/
 unit_coverage/
 bower_components/
+typings
 
 *.log
