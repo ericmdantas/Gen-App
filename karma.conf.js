@@ -37,12 +37,38 @@ module.exports = function(config) {
       "/app/": "/base/client/dev/"
     },
 
-    reporters: ['progress'],
-    port: 9876,
-    colors: true,
-    logLevel: config.LOG_INFO,
-    autoWatch: true,
-    browsers: ['Chrome'],
-    singleRun: true
-  })
-}
+        port: 9876,
+ 
+        logLevel: config.LOG_INFO,
+ 
+        colors: true,
+ 
+        autoWatch: true,
+ 
+        browsers: ['Chrome'],
+ 
+        // Karma plugins loaded
+        plugins: [
+            'karma-jasmine',
+            'karma-coverage',
+            'karma-chrome-launcher'
+        ],
+ 
+        // Coverage reporter generates the coverage
+        reporters: ['progress', 'dots', 'coverage'],
+ 
+        // Source files that you wanna generate coverage for.
+        // Do not include tests or libraries (these files will be instrumented by Istanbul)
+        preprocessors: {
+            'dist/**/!(*spec).js': ['coverage']
+        },
+ 
+        coverageReporter: {
+            reporters:[
+                {type: 'json', subdir: '.', file: 'coverage-final.json'}
+            ]
+        },
+ 
+        singleRun: true
+    })
+};
