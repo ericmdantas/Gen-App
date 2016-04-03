@@ -10,6 +10,7 @@ before_script:
   - npm install -g gulp-cli mocha
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
+  - export CHROME_BIN=chromium-browser
 
 script:
   - npm run test-client
@@ -24,3 +25,5 @@ addons:
     packages:
     - gcc-4.8
     - g++-4.8
+
+
