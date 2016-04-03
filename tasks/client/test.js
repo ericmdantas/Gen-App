@@ -1,6 +1,6 @@
 import gulp from 'gulp';
 import coveralls from 'gulp-coveralls';
-import {server as karma} from 'karma';
+var Server = require('karma').Server;
 import {tasks} from './const';
 
 gulp.task(tasks.CLIENT_UNIT_TEST, (done) => {
