@@ -1,21 +1,18 @@
-var Todo = require('../../../server/api/Private/todo/dao/todo-dao').default;
-var dbJson = require('./db.json').db.test.url;
+import Todo from '../../../server/api/Private/todo/dao/todo-dao';
+import dbJson from './db.json';
 
-var _setupMongoose = function(mongoose) {
+exports.setupMongoose = (mongoose) => {
   mongoose.models = {};
-  mongoose.connect(dbJson);
-  mongoose.connection.on('error', function() {});
+  mongoose.connect(dbJson.db.test.url);
+  mongoose.connection.on('error', () => {});
 }
 
-var _createTodos = function() {
-    var _array = [];
+exports.createTodos = () => {
+    let _array = [];
 
-    for (var i = 0; i < 10; i++) {
+    for (let i = 0; i < 10; i++) {
         _array.push({_id: '507c7f79bcf86cd7994f6c'+ (i + 10), todoMessage: 'aaaaaaa'+i});
     }
 
     return Todo.createTodo(_array);
 }
-
-exports.setupMongoose = _setupMongoose;
-exports.createTodos = _createTodos;

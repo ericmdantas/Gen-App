@@ -1,4 +1,3 @@
-"use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -53,5 +52,6 @@ var SignupComponent = (function () {
         __metadata('design:paramtypes', [common_1.FormBuilder, user_service_1.UserService, router_1.Router])
     ], SignupComponent);
     return SignupComponent;
-}());
+})();
 exports.SignupComponent = SignupComponent;
+//# sourceMappingURL=signup.component.js.map

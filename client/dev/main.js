@@ -1,4 +1,3 @@
-"use strict";
 var core_1 = require('angular2/core');
 var browser_1 = require('angular2/platform/browser');
 var http_1 = require('angular2/http');
@@ -9,3 +8,4 @@ browser_1.bootstrap(app_component_1.AppComponent, [
     router_1.ROUTER_PROVIDERS,
     core_1.provide(router_1.LocationStrategy, { useClass: router_1.HashLocationStrategy })
 ]);
+//# sourceMappingURL=main.js.map
